@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana/日本語の冒険</title>
+    <link rel="stylesheet" href="main_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header>
+        <a data-value = "日本語の冒険" href="index.html" class="logo">日本語の冒険</a>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li>
+              <div class="menu_language">
+                  <div id="selected_language">
+                    Language
+                  </div>
+                  <ul>
+                      <li>
+                        <a href="port.html" class="Br"><img src="https://flagsapi.com/BR/flat/24.png" id="flag_br">Portuguese</a>
+                      </li>
+                       <li>
+                        <a class="Us" href="ad_astra_home.html"><img src="https://flagsapi.com/US/flat/24.png" id="flag">English</a>
+                      </li>
+                      <li>
+                        <a class="Jp" href="jap.html"><img src="https://flagsapi.com/JP/flat/24.png" id="flag">Japonese</a>
+                      </li>
+                   </ul>
+              </div>
+          </li>
+        </ul>
+    </header> 
+    <section class="sec-01"> 
+      <div class="main-image">
+        <img src="hiragana-title5-transformed.jpeg" alt="Image">
+        <h1 class="quiz-text2">
+          <span class="magic">
+            <span class="magic-text2" id="text2">Hiragana</span>
+          </span>
+        </h1>
+      </div>
+    </section>
+    <h2 class = "lesson">Hiragana is one of the essential Japanese writing<br>
+    systems, consisting of 46 characters that represent syllables.</h2>
+    <div class = "container">
+        <div class="left-div">
+          <h2 class = "lesson2">Hiragana provides the foundation for reading and writing, so japanese kids start learning it by the age of 5.
+          </h3>
+        </div>
+        <div class="right-div">
+            <img src="studying-girl.png" alt="Image" class = "study-girl">
+        </div>
+    </div>
+    <h2 class = "lesson3">Basic Hiragana Chart:</h2>
+    <div class = "container">
+      <img src="hiraganachart4.png" alt="Image" class = "chart">
+    </div>
+    <h3 class = "lesson4">These basic characters are called "Seion" (清音) or<br>"unvoiced syllables". It is recommended to learn<br>them first because the 
+      "Dakuon" (濁音) and<br>the "Handakuon" (半濁音), which are voiced and<br>semi-voiced syllables, originate from them.
+    </h3>
+    <h2 class = "lesson3" id = "dakuon-text">Dakuon and Handakuon:</h2>
+    <div class = "container">
+      <img src="gakuon.png" alt="Image" class = "chart2">
+    </div>
+    <h3 class = "lesson4" id = "dakuon">For the "Dakuon" (like ざ, for example) we basically put a<br>quotation mark on the syllable, making it voiced ("sa" becomes "za").<br>For the Handakuon (which only works in the "h-line")<br> 
+      we add a small circle, they will then make a p-sound.
+    </h3>
+    <h3 class = "lesson4" id = "dakuon">There are also the "Youon" (拗音), which combine some syllables with<br>"ya", "yo" or "yu", making different sounds.</h3>
+    <div class = "container">
+      <img src="yoon.png" alt="Image" class = "chart2" id = "yoon">
+    </div>
+<script>
+  ScrollReveal({
+        distance: '60px',
+        duration: 1000,
+        delay: 100
+      });
+
+
+      ScrollReveal().reveal('.image', { delay: 200, origin: 'bottom' });
+      ScrollReveal().reveal('.text-box', { delay: 200, origin: 'right' });
+      ScrollReveal().reveal('.text-box2', { delay: 200, origin: 'left' });
+
+
+      const letters = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
+
+
+        let interval = null;
+
+
+        const logo = document.querySelector(".logo");
+
+
+        function applyEffect(element) {
+            let iteration = 0;
+            clearInterval(element.interval);
+
+
+            element.interval = setInterval(() => {
+                element.innerText = element.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return element.dataset.value[index];
+                        }
+
+
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
+
+
+                if (iteration >= element.dataset.value.length) {
+                    clearInterval(element.interval);
+                }
+
+
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyEffect(logo);
+        });
+
+
+        logo.addEventListener("mouseover", () => {
+            applyEffect(logo);
+        });
+</script>
